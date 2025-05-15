@@ -1,7 +1,11 @@
 # DonInf2 Starting Code
 This some boiler plate code for the DonInf2 course project. Use this code as starting point for your project.
 
+
 Ici c'est Charline  
+
+coucou les loulous
+
 ## Setup
 ### 1. Repository On Github
 First you need to get a copy of this repository, the best approach is to fork this repository. a fork is a github specific functionality, it creates your own copy of a repository. You need a github account in order to fork a repository.
@@ -62,3 +66,6 @@ A few string manipulation examples are found in the `src/exemples` folder and ca
 Feel free to edit this README as well, it's yours :)
 The format of this file is [markdown](https://markdownlivepreview.com/)
 
+
+# Je suis passé par la !! 
+encore moiiiiii
