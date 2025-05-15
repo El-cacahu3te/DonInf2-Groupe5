@@ -1,7 +1,7 @@
 package main;
 
 
-public class Game {
+public class jkkxfGame {
 
     public Game(){
         System.out.println("Initializing game...");
