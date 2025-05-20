@@ -4,6 +4,7 @@ package main;
 import examples.ConsoleStylingExample;
 import examples.StringManipulation;
 import examples.UserInputExample;
+import main.game.Game;
 import utils.Color;
 import utils.StringStyling;
 import utils.Style;

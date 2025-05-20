@@ -1,4 +1,4 @@
-package main.Game;
+package main.game;
 
 public class Game {
     Player player;
@@ -29,6 +29,7 @@ public class Game {
         }
         public void run() {
             System.out.println("Running game...");
+            System.out.println();
             // your runtime code here...
 
 
