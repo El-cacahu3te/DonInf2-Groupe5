@@ -22,8 +22,9 @@ public class Game {
             Zone riviere = new Zone("La rivière","ldajljal",true);
             Zone leMassif = new Zone("Le massif de fleurs","ldajljal",true);
             Zone jardin = new Zone("Le jardin","Le jardin est un joli entroit, plein d'herbes et de plantes sauvages, fait pour que les petits et les grands puissent passer du bon temps. ",true);
-
+            map.addZone(jardin, 2, 2);
         }
+        
         public void setZone() {
 
         }
@@ -35,6 +36,8 @@ public class Game {
 
             // end of game
         }
+
+
     }
 
 
