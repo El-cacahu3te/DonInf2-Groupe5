@@ -45,7 +45,6 @@ public class WorldMap {
     }
 
     public String printMap() {
-        String str = Array2Dprinter.print2DArray(map, -1, -1);
-        return str;
+        return Array2Dprinter.print2DArray(map, -1, -1);
     }
 }
