@@ -1,6 +1,8 @@
 package main.game;
 
-public class Zone {
+import utils.IPrintable;
+
+public class Zone implements IPrintable {
     private String name;
     private String desc;
     private boolean islocked;
@@ -10,13 +12,23 @@ public class Zone {
             this.desc = desc;
             this.islocked = islocked;
             this.name = name;
-     }
-     public void getZone (Zone name){
+    }  
 
-     }
+    public String getZoneName(){
+        return this.name; 
+    }
 
+    @Override
+    public String getPrintableString(){
+        if(islocked){
+            return "Locked"; 
+        } else {
+            return this.getZoneName(); 
+        }
 
-     public void addZone (String name, String desc, boolean islocked){
-          //rejouter comment et règles
-     }
+    @Override
+    public boolean isGrayedOut() {
+        return  islocked; 
+        
+    }
 }
