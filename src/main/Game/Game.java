@@ -5,12 +5,6 @@ public class Game {
     WorldMap map;
     CommandRegistry command;
 
-
-
-
-
-   System.out.println("Initializing game...");
-
         public void init() {
             this.map = new WorldMap(3,3);
             Zone cuisine = new Zone("La cuisine", "cest surper", true);
@@ -35,6 +29,7 @@ public class Game {
 
         public void run(){
             init(); 
+            System.out.println(map.printMap());
            
         }
 

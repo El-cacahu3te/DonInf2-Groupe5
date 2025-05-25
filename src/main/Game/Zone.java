@@ -25,6 +25,7 @@ public class Zone implements IPrintable {
         } else {
             return this.getZoneName(); 
         }
+    }
 
     @Override
     public boolean isGrayedOut() {
