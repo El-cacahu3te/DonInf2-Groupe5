@@ -18,6 +18,14 @@ public class Zone implements IPrintable {
         return this.name; 
     }
 
+    public String getZoneDesc(){
+        return this.desc; 
+    }
+
+    public boolean getZoneState() {
+        return this.islocked;
+    }
+
     @Override
     public String getPrintableString(){
         if(islocked){

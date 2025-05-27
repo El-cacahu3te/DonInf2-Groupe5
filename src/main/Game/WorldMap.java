@@ -8,10 +8,10 @@ public class WorldMap {
     private int width;
     private int height;
 
-    public WorldMap(int x, int y) {
-        this.width = x;
-        this.height = y;
-        this.map = new Zone[x][y];
+    public WorldMap(int width, int height) {
+        this.width = width;
+        this.height = height;
+        this.map = new Zone[width][height];
 
     }
 
@@ -43,6 +43,10 @@ public class WorldMap {
     public int getHeight() {
         return map[0].length;
     }
+
+    //public WorldMap getZoneMap() {
+       // return this.map;
+    //}
 
     public String printMap() {
         return Array2Dprinter.print2DArray(map, -1, -1);

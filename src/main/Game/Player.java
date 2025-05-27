@@ -2,13 +2,24 @@ package main.game;
 
 public class Player {
     private String name; 
+    private Zone StartingZone; 
+    private int x, y; // Position du joueur sur la carte
 
-    public Player(String name){
-        this.name = name; 
-    }
 
-    public void moveTo(String indication){
-    /*     switch(indication.toLowerCase()) {
+    public Player(String PlayerName, Zone StartingZone ){
+        this.name = PlayerName; 
+        this.x = 0; // Position initiale du joueur
+        this.y = 0; // Position initiale du joueur
+        // !définir la zone de départ si elle n'est pas verrouillée
+        if(StartingZone != null && !StartingZone.getZoneState()) {// Vérifie si la zone de départ n'est pas verrouillée et qu'elle existe
+            this.StartingZone = StartingZone; 
+        } else {
+            System.out.println("Cette zone n'est pas la zone de départ");
+        }   
+      }
+
+    /*public void moveTo(String indication){
+         switch(indication.toLowerCase()) {
     case "north":
         if (.getY() > 0) {
             player.setY(player.getY() - 1);
@@ -41,11 +52,27 @@ public class Player {
         }
         break;
 
+     case "north-east":
+        if (player.getX() > 0) {
+            player.setX(player.getX() - 1);
+        } else {
+            System.out.println("Vous ne pouvez pas aller plus à l'ouest.");
+        }
+        break;
+
+     case "north-west":
+        if (player.getX() > 0) {
+            player.setX(player.getX() - 1);
+        } else {
+            System.out.println("Vous ne pouvez pas aller plus à l'ouest.");
+        }
+        break;
+
     default:
         System.out.println("Invalid direction: " + indication);
         break;
-    }*/
     }
+    }*/
 
 }
     
