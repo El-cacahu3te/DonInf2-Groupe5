@@ -36,6 +36,18 @@ public class WorldMap {
         return null; // si rien trouvé
     }
 
+    public int[] getZoneCoordinates(String zoneName) {
+        for (int x = 0; x < map.length; x++) {
+            for (int y = 0; y < map[x].length; y++) {
+                Zone zone = map[x][y];
+                if (zone != null && zone.getZoneName().equals(zoneName)) {
+                    return new int[]{x, y}; //retourne les coordonnées de la zone
+                }
+            }
+        }
+        return null; // si rien trouvé
+    }
+
     public int getWidth() {
         return map.length;
     }
