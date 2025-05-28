@@ -1,44 +1,66 @@
 package main.game;
 
+import utils.Array2Dprinter;
 import utils.IPrintable;
 
 public class WorldMap {
     private Zone[][] map;
-    private int x; 
-    private int y; 
+    private int width;
+    private int height;
 
-
-    public WorldMap (int x, int y){
-        this.x = x; 
-        this.y = y; 
-        this.map = new Zone[x][y];
+    public WorldMap(int width, int height) {
+        this.width = width;
+        this.height = height;
+        this.map = new Zone[width][height];
 
     }
-    public void addZone (Zone zone, int x, int y){
-        if(map[x][y] == null){
-         map[x][y] = zone; 
-    } else {
-        System.out.println("Cette Zone existe déjà");
+
+    public void addZone(Zone zone, int x, int y) {
+        if (map[x][y] == null) {
+            map[x][y] = zone;
+        } else {
+            System.out.println("Cette Zone existe déjà");
+        }
     }
-    public Zone getZone (String zoneName){
-        for(int x = 0; x <= map.length; x++){
-             
-            for(int y = 0; y <= map.length; y++){
-                Zone zone = map[x][y];  
-                if (zone != null && zone.getZoneName().equals(zoneName)) { //faire le getName
-                    return zone; 
-                } 
+
+    public Zone getZone(String zoneName) {
+        for (int x = 0; x <= map.length; x++) {
+
+            for (int y = 0; y <= map.length; y++) {
+                Zone zone = map[x][y];
+                if (zone != null && zone.getZoneName().equals(zoneName)) { // faire le getName
+                    return zone;
+                }
             }
-        } return null; //si rien trouvé 
+        }
+        return null; // si rien trouvé
     }
-    public int getX(){
-        return map.length; 
+
+    public int[] getZoneCoordinates(String zoneName) {
+        for (int x = 0; x < map.length; x++) {
+            for (int y = 0; y < map[x].length; y++) {
+                Zone zone = map[x][y];
+                if (zone != null && zone.getZoneName().equals(zoneName)) {
+                    return new int[]{x, y}; //retourne les coordonnées de la zone
+                }
+            }
+        }
+        return null; // si rien trouvé
     }
-    public int getY(){
+
+    public int getWidth() {
+        return map.length;
+    }
+
+    public int getHeight() {
         return map[0].length;
     }
-    public IPrintable[][] map(){
-        this.map.print2DArray(map,getX(),getY()); 
-        return this.map; 
+
+    //public WorldMap getZoneMap() {
+       // return this.map;
+    //}
+
+    public String printMap() {
+        return Array2Dprinter.print2DArray(map, -1, -1);
     }
 }
