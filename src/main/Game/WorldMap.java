@@ -15,6 +15,21 @@ public class WorldMap {
 
     }
 
+   private boolean isOutOfBounds(int x, int y) {
+        if (x < 0 || x >= width || y < 0 || y >= height) {
+           return true; // Coordonnées en dehors des limites de la carte
+        } else {
+            return false; // Coordonnées valides
+        }
+    }
+
+    public Zone getZone(int x, int y) {
+        if (isOutOfBounds(x, y)) {
+            return null; // Coordonnées en dehors des limites de la carte
+        }
+        return map[x][y];
+    }
+
     public void addZone(Zone zone, int x, int y) {
         if (map[x][y] == null) {
             map[x][y] = zone;
@@ -48,6 +63,7 @@ public class WorldMap {
         return null; // si rien trouvé
     }
 
+
     public int getWidth() {
         return map.length;
     }
@@ -56,11 +72,8 @@ public class WorldMap {
         return map[0].length;
     }
 
-    //public WorldMap getZoneMap() {
-       // return this.map;
-    //}
+    public String printMap(int x, int y) {
 
-    public String printMap() {
-        return Array2Dprinter.print2DArray(map, -1, -1);
+        return Array2Dprinter.print2DArray(map, x, y);
     }
 }

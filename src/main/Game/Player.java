@@ -17,6 +17,9 @@ public class Player {
         this.y = y;
     }
 
+     public int[] getPlayerPosition() {
+        return new int[]{x, y};
+    }
 }
     
 

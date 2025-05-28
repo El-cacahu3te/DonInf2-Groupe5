@@ -25,6 +25,9 @@ public class Game {
             map.addZone(poulailler, 0, 2);
             map.addZone(verger, 1, 2);
             map.addZone(foret, 2, 2);
+            commandRegistry = new CommandRegistry();
+            commandRegistry.put("move", new MoveCommand(null));
+            Player p1 = new Player("Alice");
         }
 
         public void run(){

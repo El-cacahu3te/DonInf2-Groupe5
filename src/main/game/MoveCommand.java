@@ -1,20 +1,26 @@
 package main.game;
 
-public abstract class Command {
-    
-    public abstract void execute(String args);
+public class MoveCommand extends Command {
+   Player p; 
+    WorldMap map;
 
 
+    public MoveCommand(Player p, WorldMap map) {
+      this.p = p; 
+      this.map = map;
+      
+    }
 
 
-    /*public void moveTo(String indication){
-         switch(indication.toLowerCase()) {
+    @Override
+    public void execute(String args) {
+        int[] position = p.getPlayerPosition();
+        int x = position[0];
+        int y = position[1];
+
+         switch(args.toLowerCase()) {
     case "north":
-        if (.getY() > 0) {
-            player.setY(player.getY() - 1);
-        } else {
-            System.out.println("Vous ne pouvez pas aller plus au nord.");
-        }
+        y += 1;     
         break;
 
     case "south":
@@ -58,8 +64,21 @@ public abstract class Command {
         break;
 
     default:
-        System.out.println("Invalid direction: " + indication);
+        System.out.println("Invalid direction: " + args);
         break;
     }
-    }*/
+        if(map.getZone(x,y) != null) {
+            p.setPlayerPosition(x, y);
+            System.out.println("Vous vous déplacez vers " + map.getZone(x, y).getZoneName());
+        } else {
+            System.out.println("Vous ne pouvez pas vous déplacer dans cette direction, il n'y a pas de zone.");
+        }
+    }
+
+
+        
+    }
+
+    
+
 }
