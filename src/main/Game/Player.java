@@ -2,77 +2,20 @@ package main.game;
 
 public class Player {
     private String name; 
-    private Zone StartingZone; 
+    private Zone startingZone; 
     private int x, y; // Position du joueur sur la carte
 
 
-    public Player(String PlayerName, Zone StartingZone ){
+    public Player(String PlayerName){
         this.name = PlayerName; 
         this.x = 0; // Position initiale du joueur
-        this.y = 0; // Position initiale du joueur
-        // !définir la zone de départ si elle n'est pas verrouillée
-        if(StartingZone != null && !StartingZone.getZoneState()) {// Vérifie si la zone de départ n'est pas verrouillée et qu'elle existe
-            this.StartingZone = StartingZone; 
-        } else {
-            System.out.println("Cette zone n'est pas la zone de départ");
-        }   
+        this.y = 0; // Position initiale du joueur   // !définir la zone de départ si elle n'est pas verrouillée
       }
 
-    /*public void moveTo(String indication){
-         switch(indication.toLowerCase()) {
-    case "north":
-        if (.getY() > 0) {
-            player.setY(player.getY() - 1);
-        } else {
-            System.out.println("Vous ne pouvez pas aller plus au nord.");
-        }
-        break;
-
-    case "south":
-        if (player.getY() < map.length - 1) {
-            player.setY(player.getY() + 1);
-        } else {
-            System.out.println("Vous ne pouvez pas aller plus au sud.");
-        }
-        break;
-
-    case "east":
-        if (player.getX() < map[0].length - 1) {
-            player.setX(player.getX() + 1);
-        } else {
-            System.out.println("Vous ne pouvez pas aller plus à l'est.");
-        }
-        break;
-
-    case "west":
-        if (player.getX() > 0) {
-            player.setX(player.getX() - 1);
-        } else {
-            System.out.println("Vous ne pouvez pas aller plus à l'ouest.");
-        }
-        break;
-
-     case "north-east":
-        if (player.getX() > 0) {
-            player.setX(player.getX() - 1);
-        } else {
-            System.out.println("Vous ne pouvez pas aller plus à l'ouest.");
-        }
-        break;
-
-     case "north-west":
-        if (player.getX() > 0) {
-            player.setX(player.getX() - 1);
-        } else {
-            System.out.println("Vous ne pouvez pas aller plus à l'ouest.");
-        }
-        break;
-
-    default:
-        System.out.println("Invalid direction: " + indication);
-        break;
+    public void setPlayerPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
-    }*/
 
 }
     
