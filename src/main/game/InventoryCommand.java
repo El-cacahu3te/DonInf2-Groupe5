@@ -1,0 +1,46 @@
+package main.game;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class InventoryCommand implements Command {
+    private final Game game;
+    private List<Item> items = new ArrayList<>();
+
+    public InventoryCommand(Game game) {
+        this.game = game;
+    }
+
+    @Override
+    public String getName() {
+        return "inventory";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Affiche le contenu de l'inventaire du joueur.";
+    }
+
+    public List<Item> getItems() {
+        for (Item item : game.getPlayer().getInventory()) {
+            if (item != null) {
+                items.add(item);
+            }
+        }
+        return items;
+    }
+    @Override
+    public void execute(String[] args) {
+        Player player = game.getPlayer();
+        if (player.getInventory().isEmpty()) {
+            System.out.println("Votre inventaire est vide.");
+        } else {
+            System.out.println("Contenu de l'inventaire :");
+            for (Item item : player.getInventory()) {
+                System.out.println("- " + item);
+            }
+        }
+    }
+
+
+}
