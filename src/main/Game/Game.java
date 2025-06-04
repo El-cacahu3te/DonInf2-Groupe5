@@ -32,10 +32,7 @@ public class Game {
         map.addZone(poulailler, 0, 2);
         map.addZone(verger, 1, 2);
         map.addZone(foret, 2, 2);
-
-         commandRegistry = new CommandRegistry();
-            commandRegistry.put("move", new MoveCommand(null));
-            Player p1 = new Player("Alice");
+   
 
         // Création du joueur et position initiale
         this.player = new Player("Joueur");
@@ -53,7 +50,7 @@ public class Game {
         init();
         System.out.println("Bienvenue dans le jeu !");
         System.out.println("Tapez 'help' pour voir les commandes disponibles.");
-        System.out.println(map.printMap());
+        System.out.println(map.printMap(player.getX(), player.getY()));
 
         Scanner scanner = new Scanner(System.in);
         while (true) {

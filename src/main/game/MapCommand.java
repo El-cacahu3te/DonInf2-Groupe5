@@ -19,6 +19,6 @@ public class MapCommand implements Command {
 
     @Override
     public void execute(String[] args) {
-        System.out.println(game.getMap().printMap());
+        System.out.println(game.getMap().printMap(game.getPlayer().getX(), game.getPlayer().getY()));
     }
 }
