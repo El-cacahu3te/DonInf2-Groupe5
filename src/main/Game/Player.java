@@ -6,6 +6,7 @@ import java.util.List;
 public class Player {
     private String name;
     private Zone startingZone;
+    private Inventory inventory = new Inventory(); // Inventaire du joueur
     private int x, y; // Position du joueur sur la carte
 
     public Player(String PlayerName) {
@@ -32,21 +33,10 @@ public class Player {
         return this.y;
     }
 
-       public void addItemToInventory(Item item) {
-        if (item != null && !this.getItems().contains(item)) {
-            this.getItems().add(item);
-        } else {
-            System.out.println("L'item est déjà dans l'inventaire ou est nul.");
-        }
+    
+    public Inventory getInventory() {  
+        return inventory;
     }
-    public ArrayList<Item> getInventory() {
-        ArrayList<Item> items = new ArrayList<>();
-        for (Item item : this.getInventory()) {
-            if (item != null) {
-                items.add(item);
-            }
-        }
-        return items;
-    }
+
 
 }

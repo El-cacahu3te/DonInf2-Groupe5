@@ -52,19 +52,19 @@ public class Zone implements IPrintable {
 
         }
     }
-    public ArrayList<Item> getItem() {
-        ArrayList<Item> itemList = new ArrayList<>();
-        for (Item item : items) {
-            if (item != null) {
-                itemList.add(item);
-            }
-        }
-        return itemList;
+
+    public Item getItem(String name) {
+        for (Item i : items) {
+            if (i.getItemName().equals(name)) {
+                return i;
+            } 
+        } return null; 
     }
 
     public void removeItem(Item item) {
         if (item != null && items.contains(item)) {
             items.remove(item);
+
         } else {
             System.out.println("Item is null or does not exist in the zone.");
         }

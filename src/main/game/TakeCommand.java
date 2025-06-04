@@ -27,10 +27,10 @@ public class TakeCommand implements Command {
         }
 
         String itemName = args[0];
-        Item item = currentZone.getItem();
+        Item item = currentZone.getItem(itemName);
 
-        if (item != null) {
-            player.addItemToInventory(item);
+        if (item != null && item.canTake()) {
+            player.getInventory().addItem(item);
             currentZone.removeItem(item);
             System.out.println("Vous avez pris l'objet: " + itemName);
         } else {

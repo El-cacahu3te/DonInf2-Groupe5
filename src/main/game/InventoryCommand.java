@@ -5,7 +5,7 @@ import java.util.List;
 
 public class InventoryCommand implements Command {
     private final Game game;
-    private List<Item> items = new ArrayList<>();
+    
 
     public InventoryCommand(Game game) {
         this.game = game;
@@ -21,14 +21,6 @@ public class InventoryCommand implements Command {
         return "Affiche le contenu de l'inventaire du joueur.";
     }
 
-    public List<Item> getItems() {
-        for (Item item : game.getPlayer().getInventory()) {
-            if (item != null) {
-                items.add(item);
-            }
-        }
-        return items;
-    }
     @Override
     public void execute(String[] args) {
         Player player = game.getPlayer();
@@ -36,7 +28,7 @@ public class InventoryCommand implements Command {
             System.out.println("Votre inventaire est vide.");
         } else {
             System.out.println("Contenu de l'inventaire :");
-            for (Item item : player.getInventory()) {
+            for (Item item : player.getInventory().getItems()) {
                 System.out.println("- " + item);
             }
         }

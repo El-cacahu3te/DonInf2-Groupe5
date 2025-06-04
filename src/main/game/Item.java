@@ -1,15 +1,18 @@
 package main.game;
 
-public abstract class Item implements Iitem {
+public class Item implements Iitem {
     private String name;
     private String description;
     private boolean isKey;
+    private boolean canTake; 
 
-    public Item(String name, String description, boolean isKey) {
+    public Item(String name, String description, boolean isKey, boolean canTake) {
         this.name = name;
         this.description = description;
         this.isKey = isKey;
+        this.canTake = canTake; 
     }
+
 
     @Override
     public String getItemName() {
@@ -23,11 +26,19 @@ public abstract class Item implements Iitem {
 
 
     @Override
-    public Boolean isAKey() {
-      //  if( isKey){
-            return isAKey();} //pas sur de moi 
-          //  else {
-           // return false;
-   // }
-    
+    public boolean isAKey() {
+     if(this.isKey){
+        return true; 
+     } else {
+            return false; }
+     }
+
+     @Override
+    public boolean canTake() {
+     if(this.canTake){
+        return true; 
+     } else {
+            return false; }
+     }
+
 }
