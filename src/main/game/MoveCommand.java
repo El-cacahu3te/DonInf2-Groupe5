@@ -1,84 +1,66 @@
 package main.game;
 
-public class MoveCommand extends Command {
-   Player p; 
-    WorldMap map;
+public class MoveCommand implements Command {
+    private final Game game;
 
-
-    public MoveCommand(Player p, WorldMap map) {
-      this.p = p; 
-      this.map = map;
-      
+    public MoveCommand(Game game) {
+        this.game = game;
     }
-
 
     @Override
-    public void execute(String args) {
-        int[] position = p.getPlayerPosition();
-        int x = position[0];
-        int y = position[1];
-
-         switch(args.toLowerCase()) {
-    case "north":
-        y += 1;     
-        break;
-
-    case "south":
-        if (player.getY() < map.length - 1) {
-            player.setY(player.getY() + 1);
-        } else {
-            System.out.println("Vous ne pouvez pas aller plus au sud.");
-        }
-        break;
-
-    case "east":
-        if (player.getX() < map[0].length - 1) {
-            player.setX(player.getX() + 1);
-        } else {
-            System.out.println("Vous ne pouvez pas aller plus à l'est.");
-        }
-        break;
-
-    case "west":
-        if (player.getX() > 0) {
-            player.setX(player.getX() - 1);
-        } else {
-            System.out.println("Vous ne pouvez pas aller plus à l'ouest.");
-        }
-        break;
-
-     case "north-east":
-        if (player.getX() > 0) {
-            player.setX(player.getX() - 1);
-        } else {
-            System.out.println("Vous ne pouvez pas aller plus à l'ouest.");
-        }
-        break;
-
-     case "north-west":
-        if (player.getX() > 0) {
-            player.setX(player.getX() - 1);
-        } else {
-            System.out.println("Vous ne pouvez pas aller plus à l'ouest.");
-        }
-        break;
-
-    default:
-        System.out.println("Invalid direction: " + args);
-        break;
-    }
-        if(map.getZone(x,y) != null) {
-            p.setPlayerPosition(x, y);
-            System.out.println("Vous vous déplacez vers " + map.getZone(x, y).getZoneName());
-        } else {
-            System.out.println("Vous ne pouvez pas vous déplacer dans cette direction, il n'y a pas de zone.");
-        }
+    public String getName() {
+        return "move";
     }
 
-
-        
+    @Override
+    public String getDescription() {
+        return "Permet de se déplacer : move north/south/east/west";
     }
 
-    
+    @Override
+    public void execute(String[] args) {
+        if (args.length < 1) {
+            System.out.println("Veuillez indiquer une direction (north, south, east, west).");
+            return;
+        }
 
+        String direction = args[0].toLowerCase();
+        Player player = game.getPlayer();
+        int x = player.getX();
+        int y = player.getY();
+
+        int newX = x;
+        int newY = y;
+
+        switch (direction) {
+            case "north":
+                newY -= 1;
+                break;
+            case "south":
+                newY += 1;
+                break;
+            case "east":
+                newX += 1;
+                break;
+            case "west":
+                newX -= 1;
+                break;
+            default:
+                System.out.println("Direction invalide : " + direction);
+                return;
+        }
+
+        WorldMap map = game.getMap();
+        Zone targetZone = map.getZoneAt(newX, newY);
+
+        if (targetZone == null) {
+            System.out.println("Impossible d'y aller.");
+        } else if (targetZone.getZoneState()) {
+            System.out.println("Zone bloquée.");
+        } else {
+            player.setPlayerPosition(newX, newY);
+            System.out.println("Vous êtes maintenant dans : " + targetZone.getZoneName());
+            System.out.println(targetZone.getZoneDesc());
+        }
+    }
 }

@@ -46,6 +46,7 @@ public class Game {
         command.register(new HelpCommand(command));
         command.register(new MapCommand(this));
         command.register(new LookCommand(this));
+        command.register(new MoveCommand(this));
     }
 
     public void run() {
@@ -67,7 +68,7 @@ public class Game {
         scanner.close();
     }
 
-    // Getters nécessaires pour les commandes
+    // Getters pour les commandes
     public WorldMap getMap() {
         return this.map;
     }
@@ -75,4 +76,5 @@ public class Game {
     public Player getPlayer() {
         return this.player;
     }
+    
 }
