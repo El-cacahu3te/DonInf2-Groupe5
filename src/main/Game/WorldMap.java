@@ -76,4 +76,13 @@ public class WorldMap {
 
         return Array2Dprinter.print2DArray(map, x, y);
     }
+
+    public Zone getZoneAt(int x, int y) {
+        if (x >= 0 && x < map.length && y >= 0 && y < map[0].length) {
+            return map[x][y];
+        }
+        return null;
+    }
+    
+    
 }

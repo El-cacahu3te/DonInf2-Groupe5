@@ -20,6 +20,14 @@ public class Player {
      public int[] getPlayerPosition() {
         return new int[]{x, y};
     }
+    public int getX() {
+        return this.x;
+    }
+    
+    public int getY() {
+        return this.y;
+    }
+
 }
     
 
