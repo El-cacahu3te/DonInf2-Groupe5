@@ -130,13 +130,14 @@ public class Game {
         command.register(new MoveCommand(this));
         command.register(new InventoryCommand(this));
         command.register(new TakeCommand(this));
-       // command.register(new UseCommand(this));
+        command.register(new UseCommand(this));
     }
 
     public void run() {
         init();
         System.out.println("Bienvenue dans le jeu !");
         System.out.println("Tapez 'help' pour voir les commandes disponibles.");
+        System.out.println("La case bleu clair indique la case dans laquelle se trouve votre joueur");
         System.out.println(map.printMap(player.getX(), player.getY()));
 
         Scanner scanner = new Scanner(System.in);

@@ -3,7 +3,11 @@ package main.game;
 public class UseCommand implements Command {
     private final String name = "use";
     private final String description = "Utilise un objet de ton inventaire.";
+    private Game game; 
 
+    public UseCommand (Game game){
+        this.game = game; 
+    }
     @Override
     public String getName() {
         return name;
