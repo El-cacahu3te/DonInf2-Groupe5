@@ -25,14 +25,22 @@ public class TakeCommand implements Command {
         }
 
         String itemName = args[0];
-        //entièrement faux !!! 
-        Item item = game.getMap().getZone(game.getPlayer().getPlayerPosition()).getItem(itemName);
+        int x = game.getPlayer().getX();
+        int y = game.getPlayer().getY();
+
+        Zone currentZone = game.getMap().getZoneAt(x, y);
+        if (currentZone == null) {
+            System.out.println("Vous n'êtes dans aucune zone valide.");
+            return;
+        }
+
+        Item item = currentZone.getItem(itemName);
         if (item != null && item.canTake()) {
             game.getPlayer().getInventory().addItem(item);
-            game.getMap().getZoneAt(0, 0).removeItem(item);
+            currentZone.removeItem(item);
             System.out.println("Vous avez pris l'objet: " + itemName);
         } else {
-            System.out.println("L'objet '" + itemName + "' n'existe pas dans cette zone.");
+            System.out.println("L'objet '" + itemName + "' n'existe pas dans cette zone ou ne peut pas être pris.");
         }
     }
 
