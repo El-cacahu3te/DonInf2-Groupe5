@@ -82,7 +82,7 @@ public class Game {
 
         // Rivière
         Item poisson = new Item("Poisson", "Petit poisson argenté", false, true);
-        Item bouteille = new Item("Bouteille", "Bouteille contenant une clé", true, true);
+        Item bouteille = new Item("Bouteille", "Bouteille contenant un vieux bateau en allumettes", true, true);
 
         // Lisière de forêt
         Item ecorce = new Item("Écorce", "Écorce avec un symbole", false, true);
@@ -92,23 +92,32 @@ public class Game {
         Item champignon = new Item("Champignon", "Champignon étrange", false, true);
         Item totem = new Item("Totem", "Fragment de totem en bois", true, true);
         // panneaux 
-        Item paneauP = new Item("Panneau de prévention", "N'allez pas plus au Sud ou il vous arrivera malheur!", false, false);
+        Item paneauP = new Item("Panneau de prévention", "N'allez pas plus au Sud ou il vous arrivera malheur!", true, false);
         Item paneauF = new Item("Paneau de prévention", "N'allez pas plus à l'Est ou il vous arrivera malheur!", true, false);
         
         // ajouter item dans zone 
-        chambre.addItem(totem);
-        leMassif
-        riviere
-        cuisine
-        jardin
-        lisiere
-        poulailler
-        verger
-        foret
-        petanque
-        piscine
-        trouNoir
-
+        chambre.addItem(fleur);
+        chambre.addItem(livre);
+        cuisine.addItem(oeuf);
+        cuisine.addItem(pomme);
+        poulailler.addItem(bouee);
+        poulailler.addItem(pelle);
+        petanque.addItem(totem);
+        petanque.addItem(coccinelle);
+        leMassif.addItem(arrosoir);
+        leMassif.addItem(ecorce);
+        jardin.addItem(rateau);
+        jardin.addItem(caillou);
+        verger.addItem(poule);
+        verger.addItem(couteau);
+        piscine.addItem(lunette);
+        piscine.addItem(paneauP);
+        riviere.addItem(poisson);
+        riviere.addItem(cochonnet);
+        lisiere.addItem(champignon);
+        lisiere.addItem(bouteille);
+        foret.addItem(paneauF);
+        foret.addItem(boule);
         // Création du joueur et position initiale
         this.player = new Player("Joueur");
         this.player.setPlayerPosition(0, 0); // position sur "chambre"
