@@ -1,8 +1,6 @@
 package main.game;
 
 public class TakeCommand implements Command {
-    private Player player;
-    private Zone currentZone;
     private Game game; 
 
     public TakeCommand ( Game game){
@@ -27,11 +25,11 @@ public class TakeCommand implements Command {
         }
 
         String itemName = args[0];
-        Item item = currentZone.getItem(itemName);
-
+        //entièrement faux !!! 
+        Item item = game.getMap().getZone(game.getPlayer().getPlayerPosition()).getItem(itemName);
         if (item != null && item.canTake()) {
-            player.getInventory().addItem(item);
-            currentZone.removeItem(item);
+            game.getPlayer().getInventory().addItem(item);
+            game.getMap().getZoneAt(0, 0).removeItem(item);
             System.out.println("Vous avez pris l'objet: " + itemName);
         } else {
             System.out.println("L'objet '" + itemName + "' n'existe pas dans cette zone.");

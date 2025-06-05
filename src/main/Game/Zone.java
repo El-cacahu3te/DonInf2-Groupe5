@@ -29,6 +29,7 @@ public class Zone implements IPrintable {
         return this.islocked;
     }
 
+
     @Override
     public String getPrintableString() {
         if (islocked) {
