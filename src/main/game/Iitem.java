@@ -5,4 +5,6 @@ public interface Iitem {
     String getDescription();
     boolean isAKey();
     boolean canTake();
+
+    
 }   

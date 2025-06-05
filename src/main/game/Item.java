@@ -4,15 +4,24 @@ public class Item implements Iitem {
     private String name;
     private String description;
     private boolean isKey;
-    private boolean canTake; 
+    private boolean canTake;
+
+    private Ipuzzle puzzle;
+
+    public Ipuzzle getPuzzle() {
+        return puzzle;
+    }
+
+    public void setPuzzle(Ipuzzle puzzle) {
+        this.puzzle = puzzle;
+    }
 
     public Item(String name, String description, boolean isKey, boolean canTake) {
         this.name = name;
         this.description = description;
         this.isKey = isKey;
-        this.canTake = canTake; 
+        this.canTake = canTake;
     }
-
 
     @Override
     public String getItemName() {
@@ -24,21 +33,18 @@ public class Item implements Iitem {
         return description;
     }
 
-
     @Override
     public boolean isAKey() {
-     if(this.isKey){
-        return true; 
-     } else {
-            return false; }
-     }
+        return isKey;
+    }
 
-     @Override
+    @Override
     public boolean canTake() {
-     if(this.canTake){
-        return true; 
-     } else {
-            return false; }
-     }
-
+        return canTake;
+    }
+    
+    @Override
+    public String toString() {
+        return name + " : " + description;
+    }
 }
