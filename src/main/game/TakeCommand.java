@@ -3,10 +3,10 @@ package main.game;
 public class TakeCommand implements Command {
     private Player player;
     private Zone currentZone;
+    private Game game; 
 
-    public TakeCommand(Player player, Zone currentZone) {
-        this.player = player;
-        this.currentZone = currentZone;
+    public TakeCommand ( Game game){
+        this.game = game; 
     }
 
     @Override
@@ -21,7 +21,7 @@ public class TakeCommand implements Command {
 
     @Override
     public void execute(String[] args) {
-        if (args.length == 0) {
+        if (args.length < 1) {
             System.out.println("Veuillez spécifier l'objet à prendre.");
             return;
         }

@@ -15,6 +15,5 @@ public class Main {
     public static void main(String[] args) {
        Game v1 = new Game(); 
        v1.run();
-        
     }
 }

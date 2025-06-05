@@ -1,5 +1,7 @@
 package main.game;
 
+import java.awt.Font;
+
 public class MoveCommand implements Command {
     private final Game game;
 
@@ -14,7 +16,7 @@ public class MoveCommand implements Command {
 
     @Override
     public String getDescription() {
-        return "Permet de se déplacer : move north/south/east/west";
+        return "Permet de se déplacer : move north/south/east/west \n  !Ne pas oublier de mettre le mot 'move' avant la direction!";
     }
 
     @Override
