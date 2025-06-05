@@ -130,8 +130,7 @@ public class Game {
         command.register(new MoveCommand(this));
         command.register(new InventoryCommand(this));
         command.register(new TakeCommand(this));
-        command.register(new ReadCommand(this));
-        command.register(new UseCommand(this));
+       // command.register(new UseCommand(this));
     }
 
     public void run() {
