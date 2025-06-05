@@ -30,6 +30,7 @@ public class WorldMap {
         return map[x][y];
     }
 
+
     public void addZone(Zone zone, int x, int y) {
         if (map[x][y] == null) {
             map[x][y] = zone;

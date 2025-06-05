@@ -29,6 +29,7 @@ public class Zone implements IPrintable {
         return this.islocked;
     }
 
+
     @Override
     public String getPrintableString() {
         if (islocked) {
@@ -57,9 +58,30 @@ public class Zone implements IPrintable {
         for (Item i : items) {
             if (i.getItemName().equals(name)) {
                 return i;
-            } 
-        } return null; 
+            }
+        }
+        return null;
     }
+
+  
+  // Retourne une chaîne listant tous les objets de la zone, ou un message si la zone est vide
+public String getItems() {
+    // Si la liste d'objets est vide
+    if (items.isEmpty()) {
+        // On retourne un message indiquant qu'il n'y a pas d'objets dans la pièce
+        return "Il n'y a pas d'objets dans cette pièce.";
+    } else {
+        // Sinon, on crée un StringBuilder pour construire la liste des objets
+        StringBuilder sb = new StringBuilder();
+        // On parcourt chaque objet de la liste 'items'
+        for (Item i : items) {
+            // On ajoute le nom de l'objet précédé d'un tiret et d'un retour à la ligne
+            sb.append(" - ").append(i.getItemName()).append("\n");
+        }
+        // On retourne la chaîne complète contenant tous les objets de la zone
+        return sb.toString();
+    }
+}
 
     public void removeItem(Item item) {
         if (item != null && items.contains(item)) {
