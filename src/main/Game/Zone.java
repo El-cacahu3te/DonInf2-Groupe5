@@ -47,7 +47,7 @@ public class Zone implements IPrintable {
     }
 
     // Gestion des objets
-    public List<Item> getItems() {
+    public List<Item> getListItems() {
         return this.items;
     }
 
@@ -69,15 +69,16 @@ public class Zone implements IPrintable {
 
     public Item getItem(String name) {
         for (Item i : items) {
-            if (i.getItemName().equalsIgnoreCase(name)) {
+            if (i.getItemName().equalsIgnoreCase(name) && i.canTake()) {
                 return i;
             }
         }
         return null;
+
     }
 
     // Pour afficher proprement tous les objets de la zone
-    public String getItemsListAsString() {
+    public String getItems() {
         if (items.isEmpty()) {
             return "Il n'y a pas d'objets dans cette pièce.";
         } else {

@@ -49,6 +49,15 @@ public class Game {
         map.addZone(trouNoir, 2, 3);
 
         // Création d'objets
+       
+
+         // ajouter les Items
+        // Poulailler
+        Item oeuf = new Item("Oeuf", "Un œuf de poule", true, true);
+        Item poule = new Item("Poule", "une petite poulette blanche", false, true);
+
+        // Cuisine
+        Item couteau = new Item("Couteau", "Un couteau de cuisine", false, true);
         Item livre = new Item("Livre", "Un vieux livre de recettes", true, true);
         livre.setPuzzle(new SimplePuzzle(
             "Je suis une boisson chaude, noire ou verte. Qui suis-je ?",
@@ -56,16 +65,64 @@ public class Game {
             "C'est une boisson qu'on boit souvent le matin."
         ));
 
-        // Autres items (extraits pour clarté)
+        // Pétanque
+        Item boule = new Item("Boule", "Boule de pétanque usée", false, true);
+        Item cochonnet = new Item("Cochonnet", "Cochonnet pour la pétanque", true, true);
+
+        // Massif de fleurs
         Item fleur = new Item("Fleur", "Une jolie fleur colorée", true, true);
-        Item couteau = new Item("Couteau", "Un couteau de cuisine", false, true);
-        Item oeuf = new Item("Oeuf", "Un œuf de poule", true, true);
+        Item coccinelle = new Item("Coccinelle", "Une coccinelle posé sur une fleur", false, true);
+
+        // Jardin
+        Item pelle = new Item("Pelle", "Petite pelle pour jardiner", false, true);
+        Item arrosoir = new Item("Arrosoir", "Arrosoir trouvée sous une haie", true, true);
+
+        // Verger
+        Item pomme = new Item("Pomme", "Une pomme trouvée dans l'arbre creux", false, true);
+        Item rateau = new Item("Rateau", "Rateau contre la cabane", true, true);
+
+        // Piscine
+        Item bouee = new Item("Bouée", "Bouée trouée mais flottante", true, true);
+        Item lunette  = new Item("Lunette de piscine", "Lunette trouvé au fond de la piscine", false, true);
+
+        // Rivière
+        Item poisson = new Item("Poisson", "Petit poisson argenté", false, true);
+        Item bouteille = new Item("Bouteille", "Bouteille contenant une clé", true, true);
+
+        // Lisière de forêt
+        Item ecorce = new Item("Écorce", "Écorce avec un symbole", false, true);
+        Item caillou = new Item("Caillou", "Caillou couverte de mousse", true, true);
+
+        // Forêt
+        Item champignon = new Item("Champignon", "Champignon étrange", false, true);
+        Item totem = new Item("Totem", "Fragment de totem en bois", true, true);
+        // panneaux 
+        Item paneauP = new Item("Panneau de prévention", "N'allez pas plus au Sud ou il vous arrivera malheur!", false, false);
+        Item paneauF = new Item("Paneau de prévention", "N'allez pas plus à l'Est ou il vous arrivera malheur!", true, false);
 
         // Ajout d’objets aux zones
-        chambre.addItem(fleur);
+          chambre.addItem(fleur);
         chambre.addItem(livre);
         cuisine.addItem(oeuf);
+        cuisine.addItem(pomme);
+        poulailler.addItem(bouee);
+        poulailler.addItem(pelle);
+        petanque.addItem(totem);
+        petanque.addItem(coccinelle);
+        leMassif.addItem(arrosoir);
+        leMassif.addItem(ecorce);
+        jardin.addItem(rateau);
+        jardin.addItem(caillou);
+        verger.addItem(poule);
         verger.addItem(couteau);
+        piscine.addItem(lunette);
+        piscine.addItem(paneauP);
+        riviere.addItem(poisson);
+        riviere.addItem(cochonnet);
+        lisiere.addItem(champignon);
+        lisiere.addItem(bouteille);
+        foret.addItem(paneauF);
+        foret.addItem(boule);
 
         // Création du joueur
         this.player = new Player("Joueur");
@@ -79,7 +136,7 @@ public class Game {
         command.register(new MoveCommand(this));
         command.register(new InventoryCommand(this));
         command.register(new TakeCommand(this));
-        command.register(new UseCommand(this));
+        command.register(new UseCommand(this)); // inutile à retirer 
         command.register(new SolveCommand(this)); // <-- Ajouté pour les énigmes
     }
 

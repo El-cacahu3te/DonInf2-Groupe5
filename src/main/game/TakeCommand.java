@@ -34,11 +34,13 @@ public class TakeCommand implements Command {
             return;
         }
 
+        //récup objet de la zone 
         Item item = currentZone.getItem(itemName);
-        if (item == null || !item.canTake()) {
-            System.out.println("L'objet '" + itemName + "' n'existe pas dans cette zone ou ne peut pas être pris.");
-            return;
-        }
+         if (item == null) {
+        System.out.println("Cet objet n'existe pas dans cette zone ou n'exciste pas.");
+        return;
+    }
+
 
         // ➕ Vérifie s'il y a une énigme associée
         Ipuzzle puzzle = item.getPuzzle();
@@ -52,6 +54,6 @@ public class TakeCommand implements Command {
         // ➕ Si l'énigme est résolue (ou pas d'énigme), on prend l'objet
         game.getPlayer().getInventory().addItem(item);
         currentZone.removeItem(item);
-        System.out.println("Vous avez pris l'objet: " + itemName);
+        System.out.println("Vous avez ajouté " + itemName + " à votre inventaire.");
     }
 }

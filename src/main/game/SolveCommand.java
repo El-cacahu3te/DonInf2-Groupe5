@@ -22,7 +22,7 @@ public class SolveCommand implements Command {
         Player player = game.getPlayer();
         Zone currentZone = game.getMap().getZoneAt(player.getX(), player.getY());
 
-        for (Item item : currentZone.getItems()) {
+        for (Item item : currentZone.getListItems()) {
             Ipuzzle puzzle = item.getPuzzle();
             if (puzzle != null && !puzzle.isSolved()) {
                 puzzle.solve(args);
