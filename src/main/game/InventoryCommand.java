@@ -13,7 +13,7 @@ public class InventoryCommand implements Command {
 
     @Override
     public String getName() {
-        return "looinventory";
+        return "look inventory";
     }
 
     @Override

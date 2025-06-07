@@ -57,7 +57,7 @@ public class Game {
         oeuf.setPuzzle(new SimplePuzzle(
                 "Je suis la base d'une omelette, mais je ne suis pas un plat.",
                 "omelette",
-                "Je viens souvent d'une poule."
+                "Je suis un met a base d'oeufs."
         ));
         oeuf.setZoneToUnlock(poulailler);
 
@@ -71,7 +71,7 @@ public class Game {
         couteau.setPuzzle(new SimplePuzzle(
                 "Je suis souvent utilisé pour couper une tomate dans la cuisine.",
                 "tomate",
-                "Je suis tranchant et métallique."
+                "Je suis un fruit ou un légume, qui sait."
         ));
         couteau.setZoneToUnlock(null);
 
@@ -79,7 +79,7 @@ public class Game {
         livre.setPuzzle(new SimplePuzzle(
                 "Je suis une boisson chaude, noire ou verte. Qui suis-je ?",
                 "the",
-                "C'est une boisson qu'on boit souvent le matin."
+                "Je suis une boisson chaude, noire ou verte. Qui suis-je ?"
         ));
         livre.setZoneToUnlock(cuisine);
 
@@ -92,7 +92,7 @@ public class Game {
         cochonnet.setPuzzle(new SimplePuzzle(
                 "Je suis la petite cible au centre du jeu de boules, on me trouve souvent vers le sud.",
                 "sud",
-                "Sans moi, la pétanque n'est pas possible."
+                "Je suis la région d'ou vient la pétanque."
         ));
         cochonnet.setZoneToUnlock(petanque);
 
@@ -101,7 +101,7 @@ public class Game {
         fleur.setPuzzle(new SimplePuzzle(
                 "Je suis une fleur très célèbre, souvent rouge et épineuse.",
                 "rose",
-                "On m'offre souvent en cadeau."
+                "Je suis une fleur très célèbre, souvent rouge et épineuse."
         ));
         fleur.setZoneToUnlock(leMassif);
 
@@ -118,7 +118,7 @@ public class Game {
         arrosoir.setPuzzle(new SimplePuzzle(
                 "Je verse de l'eau pour faire pousser les plantes.",
                 "eau",
-                "Je suis indispensable au jardinier."
+                "Je suis indispensable au jardinier, mais surtout à l'arrosoir."
         ));
         arrosoir.setZoneToUnlock(jardin);
 
@@ -131,7 +131,7 @@ public class Game {
         rateau.setPuzzle(new SimplePuzzle(
                 "Je rassemble la terre ou les feuilles mortes.",
                 "terre",
-                "On m'utilise souvent au jardin."
+                "On m'utilise souvent au jardin, mais je ne suis pas une pelle."
         ));
         rateau.setZoneToUnlock(verger);
 
@@ -140,7 +140,7 @@ public class Game {
         bouee.setPuzzle(new SimplePuzzle(
                 "Je flotte souvent sur la mer pour garder la tête hors de l'eau.",
                 "mer",
-                "On me voit souvent en été au bord de l'eau."
+                "Je peut être morte et rouge."
         ));
         bouee.setZoneToUnlock(piscine);
 
@@ -157,7 +157,7 @@ public class Game {
         bouteille.setPuzzle(new SimplePuzzle(
                 "Je ferme une bouteille, je suis souvent en liège ou plastique.",
                 "bouchon",
-                "On me retire avant de boire."
+                "On me retire avant de boire à la bouteille."
         ));
         bouteille.setZoneToUnlock(riviere);
 
