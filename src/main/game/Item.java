@@ -42,9 +42,20 @@ public class Item implements Iitem {
     public boolean canTake() {
         return canTake;
     }
-    
+
     @Override
     public String toString() {
         return name + " : " + description;
     }
+
+    private Zone zoneToUnlock;
+
+    public Zone getZoneToUnlock() {
+        return zoneToUnlock;
+    }
+
+    public void setZoneToUnlock(Zone zoneToUnlock) {
+        this.zoneToUnlock = zoneToUnlock;
+    }
+
 }

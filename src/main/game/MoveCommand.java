@@ -35,16 +35,16 @@ public class MoveCommand implements Command {
         int newY = y;
 
         switch (direction) {
-            case "north":
+            case "west":
                 newY -= 1;
                 break;
-            case "south":
+            case "east":
                 newY += 1;
                 break;
-            case "east":
+            case "south":
                 newX += 1;
                 break;
-            case "west":
+            case "north":
                 newX -= 1;
                 break;
             default:

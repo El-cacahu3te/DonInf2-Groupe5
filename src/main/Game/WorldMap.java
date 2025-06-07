@@ -38,19 +38,18 @@ public class WorldMap {
             System.out.println("Cette Zone existe déjà");
         }
     }
-
     public Zone getZone(String zoneName) {
-        for (int x = 0; x <= map.length; x++) {
-
-            for (int y = 0; y <= map.length; y++) {
+        for (int x = 0; x < map.length; x++) {
+            for (int y = 0; y < map[x].length; y++) {
                 Zone zone = map[x][y];
-                if (zone != null && zone.getZoneName().equals(zoneName)) { // faire le getName
+                if (zone != null && zone.getZoneName().equals(zoneName)) {
                     return zone;
                 }
             }
         }
-        return null; // si rien trouvé
+        return null;
     }
+    
 
     public int[] getZoneCoordinates(String zoneName) {
         for (int x = 0; x < map.length; x++) {
