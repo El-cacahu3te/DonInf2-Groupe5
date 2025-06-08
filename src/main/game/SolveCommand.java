@@ -16,63 +16,73 @@ public class SolveCommand implements Command {
     public String getDescription() {
         return "Résout une énigme liée à un objet dans la zone.";
     }
-@Override
-public void execute(String[] args) {
-    if (args.length < 1) {
-        System.out.println("Utilisation : solve <objet> <réponse>");
-        return;
-    }
 
-    Player player = game.getPlayer();
-    Zone currentZone = game.getMap().getZoneAt(player.getX(), player.getY());
-    String itemName = args[0];
+    @Override
+    public void execute(String[] args) {
+        if (args.length < 1) {
+            System.out.println("Utilisation : solve <objet> <réponse>");
+            return;
+        }
 
-    // Vérifie que l'objet est dans l'inventaire du joueur
-    boolean hasItem = false;
-    for (Item invItem : player.getInventory().getItems()) {
-        if (invItem.getItemName().equalsIgnoreCase(itemName)) {
-            hasItem = true;
-            break;
+        Player player = game.getPlayer();
+        Zone currentZone = game.getMap().getZoneAt(player.getX(), player.getY());
+        String itemName = args[0];
+
+        // Vérifie que l'objet est dans l'inventaire du joueur
+        boolean hasItem = false;
+        for (Item invItem : player.getInventory().getItems()) {
+            if (invItem.getItemName().equalsIgnoreCase(itemName)) {
+                hasItem = true;
+                break;
+            }
+        }
+        if (!hasItem) {
+            System.out.println(
+                    "Vous devez avoir l'objet '" + itemName + "' dans votre inventaire pour résoudre son énigme.");
+            return;
+        }
+
+        // Cherche l'objet dans l'inventaire du joueur
+        Item item = null;
+        for (Item invItem : player.getInventory().getItems()) {
+            if (invItem.getItemName().equalsIgnoreCase(itemName)) {
+                item = invItem;
+                break;
+            }
+        }
+        if (item == null) {
+            System.out.println(
+                    "Vous devez avoir l'objet '" + itemName + "' dans votre inventaire pour résoudre son énigme.");
+            return;
+        }
+        Ipuzzle puzzle = item.getPuzzle();
+        if (puzzle == null) {
+            System.out.println("Cet objet n'a pas d'énigme à résoudre.");
+            return;
+        }
+
+        if (puzzle.isSolved()) {
+            System.out.println("L'énigme de cet objet est déjà résolue !");
+            return;
+        }
+
+        // Si aucune réponse n'est donnée, on affiche juste la question
+        if (args.length == 1) {
+            System.out.println("Énigme : " + puzzle.getName());
+            return;
+        }
+
+        // Sinon, on tente de résoudre l'énigme
+        String[] answer = new String[args.length - 1];
+        System.arraycopy(args, 1, answer, 0, answer.length);
+
+        boolean solvedBefore = puzzle.isSolved();
+        puzzle.solve(answer);
+
+        if (puzzle.isSolved() && !solvedBefore) {
+            System.out.println("Bravo ! Vous avez résolu l'énigme pour l'objet : " + item.getItemName());
+        } else if (!puzzle.isSolved()) {
+            System.out.println("Mauvaise réponse. Indice : " + puzzle.getHint());
         }
     }
-    if (!hasItem) {
-        System.out.println("Vous devez avoir l'objet '" + itemName + "' dans votre inventaire pour résoudre son énigme.");
-        return;
-    }
-
-    Item item = currentZone.getItem(itemName);
-    if (item == null) {
-        System.out.println("Aucun objet nommé '" + itemName + "' dans cette zone.");
-        return;
-    }
-
-    Ipuzzle puzzle = item.getPuzzle();
-    if (puzzle == null) {
-        System.out.println("Cet objet n'a pas d'énigme à résoudre.");
-        return;
-    }
-
-    if (puzzle.isSolved()) {
-        System.out.println("L'énigme de cet objet est déjà résolue !");
-        return;
-    }
-
-    // Si aucune réponse n'est donnée, on affiche juste la question
-    if (args.length == 1) {
-        System.out.println("Énigme : " + puzzle.getName());
-        return;
-    }
-
-    // Sinon, on tente de résoudre l'énigme
-    String[] answer = new String[args.length - 1];
-    System.arraycopy(args, 1, answer, 0, answer.length);
-
-    boolean solvedBefore = puzzle.isSolved();
-    puzzle.solve(answer);
-
-    if (puzzle.isSolved() && !solvedBefore) {
-        System.out.println("Bravo ! Vous avez résolu l'énigme pour l'objet : " + item.getItemName());
-    } else if (!puzzle.isSolved()) {
-        System.out.println("Mauvaise réponse. Indice : " + puzzle.getHint());
-    }
-}}
+}
