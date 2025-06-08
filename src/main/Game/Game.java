@@ -53,7 +53,7 @@ public class Game {
         // Création d'objets avec énigmes associées
 
         // Poulailler
-        Item oeuf = new Item("Oeuf", "Un œuf de poule", true, true);
+        Item oeuf = new Item("Oeuf", "Un oeuf de poule", true, true);
         oeuf.setPuzzle(new SimplePuzzle(
                 "Je suis la base d'une omelette, mais je ne suis pas un plat.",
                 "omelette",
@@ -77,9 +77,9 @@ public class Game {
 
         Item livre = new Item("Livre", "Un vieux livre de recettes", true, true);
         livre.setPuzzle(new SimplePuzzle(
-                "Je suis une boisson chaude, noire ou verte. Qui suis-je ?",
+                "Je suis une boisson chaude. Qui suis-je ?",
                 "the",
-                "Je suis une boisson chaude, noire ou verte. Qui suis-je ?"
+                "Je suis une boisson chaude que l'on infuse. Qui suis-je ?"
         ));
         livre.setZoneToUnlock(cuisine);
 
@@ -101,7 +101,7 @@ public class Game {
         fleur.setPuzzle(new SimplePuzzle(
                 "Je suis une fleur très célèbre, souvent rouge et épineuse.",
                 "rose",
-                "Je suis une fleur très célèbre, souvent rouge et épineuse."
+                "Je représente l'amour."
         ));
         fleur.setZoneToUnlock(leMassif);
 
