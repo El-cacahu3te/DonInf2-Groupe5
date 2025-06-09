@@ -4,14 +4,14 @@
 - Charline Vernay
 - Elise Kovacs
 
-> [!BUG]
+> [!Warning]
 > Les accents ! 
 > Si vous utilisez une commande avec un objet contenant un accent le jeu ne reconnaitra pas l'objet. 
 > 
 > Ex: take Bouée = le jeu ne reconnait pas ce mot
 > - Il est cependant possible d'utiliser les Majuscules
 
-> [!Indication]
+> [!Note]
 > Toutes les commandes sont indiquées dans "help"
 > - Le jeux commence en faisant run le code
 > - Les zones se font déverrouiller quand l'objet que vous avez préalablement pris puis utilisé, voit sont énigme résolue.
