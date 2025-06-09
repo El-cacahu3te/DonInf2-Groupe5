@@ -22,7 +22,9 @@ public class WorldMap {
             return false; // Coordonnées valides
         }
     }
-
+    public Zone[][] getMap() {
+    return map;
+}
     public Zone getZone(int x, int y) {
         if (isOutOfBounds(x, y)) {
             return null; // Coordonnées en dehors des limites de la carte

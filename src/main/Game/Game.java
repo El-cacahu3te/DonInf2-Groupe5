@@ -57,8 +57,7 @@ public class Game {
         SimplePuzzle oeufPuzzle = new SimplePuzzle(
                 "Je suis souvent mangé au petit déjeuné.",
                 "omelette",
-                "Je suis un met a base d'oeufs."
-        );
+                "Je suis un met a base d'oeufs.");
         oeufPuzzle.setZoneToUnlock(poulailler);
         oeuf.setPuzzle(oeufPuzzle);
 
@@ -71,8 +70,7 @@ public class Game {
         SimplePuzzle couteauPuzzle = new SimplePuzzle(
                 "Je suis un ingrédient essentiel dans la cuisine Italienne.",
                 "tomate",
-                "Je suis un fruit ou un légume, qui sait."
-        );
+                "Je suis un fruit ou un légume, qui sait.");
         couteau.setPuzzle(couteauPuzzle);
         couteau.setZoneToUnlock(null);
 
@@ -80,22 +78,25 @@ public class Game {
         SimplePuzzle livrePuzzle = new SimplePuzzle(
                 "Je suis une boisson chaude. Qui suis-je ?",
                 "the",
-                "Je suis une boisson chaude que l'on infuse. Qui suis-je ?"
-        );
-        livrePuzzle.setZoneToUnlock(cuisine); 
+                "Je suis une boisson chaude que l'on infuse. Qui suis-je ?");
+        livrePuzzle.setZoneToUnlock(cuisine);
         livre.setPuzzle(livrePuzzle);
 
         // Pétanque
         Item boule = new Item("Boule", "Boule de pétanque usée", false, true);
-        boule.setPuzzle(null);
-        boule.setZoneToUnlock(null);
+        // Ajout d'une énigme pour débloquer la forêt
+        SimplePuzzle boulePuzzle = new SimplePuzzle(
+                "Je roule sur le gravier, je suis lancée pour m'approcher du cochonnet. Qui suis-je ?",
+                "boule",
+                "On me lance lors d'une partie de pétanque.");
+        boulePuzzle.setZoneToUnlock(foret);
+        boule.setPuzzle(boulePuzzle);
 
         Item cochonnet = new Item("Cochonnet", "Cochonnet pour la pétanque", true, true);
         SimplePuzzle cochonnetPuzzle = new SimplePuzzle(
                 "D'ou je viens on a un super accent",
-                " le sud",
-                "Je suis la région d'ou vient la pétanque."
-        );
+                "le sud",
+                "Je suis la région d'ou vient la pétanque.");
         cochonnetPuzzle.setZoneToUnlock(petanque);
         cochonnet.setPuzzle(cochonnetPuzzle);
 
@@ -104,8 +105,7 @@ public class Game {
         SimplePuzzle fleurPuzzle = new SimplePuzzle(
                 "Je suis une fleur très célèbre, souvent rouge et épineuse.",
                 "rose",
-                "Je représente l'amour."
-        );
+                "Je représente l'amour.");
         fleurPuzzle.setZoneToUnlock(leMassif);
         fleur.setPuzzle(fleurPuzzle);
 
@@ -122,8 +122,7 @@ public class Game {
         SimplePuzzle arrosoirPuzzle = new SimplePuzzle(
                 "C'est grâce à moi que la vie sur terre existe.",
                 "eau",
-                "Je suis indispensable au jardinier, mais surtout à l'arrosoir."
-        );
+                "Je suis indispensable au jardinier, mais surtout à l'arrosoir.");
         arrosoirPuzzle.setZoneToUnlock(jardin);
         arrosoir.setPuzzle(arrosoirPuzzle);
 
@@ -136,8 +135,7 @@ public class Game {
         SimplePuzzle rateauPuzzle = new SimplePuzzle(
                 "Mon nom a plusieurs définition, l'une est globale et l'autre vitale",
                 "terre",
-                "On m'utilise souvent au jardin, mais je ne suis pas une pelle."
-        );
+                "On m'utilise souvent au jardin, mais je ne suis pas une pelle.");
         rateauPuzzle.setZoneToUnlock(verger);
         rateau.setPuzzle(rateauPuzzle);
 
@@ -146,8 +144,7 @@ public class Game {
         SimplePuzzle boueePuzzle = new SimplePuzzle(
                 "Je suis si vaste et dangereuse que les hommes me connaissent moins bien que l'espace.",
                 "mer",
-                "Je peut être morte et rouge."
-        );
+                "Je peut être morte et rouge.");
         boueePuzzle.setZoneToUnlock(piscine);
         bouee.setPuzzle(boueePuzzle);
 
@@ -164,8 +161,7 @@ public class Game {
         SimplePuzzle bouteillePuzzle = new SimplePuzzle(
                 "Je ferme une bouteille, je suis souvent en liège ou plastique.",
                 "bouchon",
-                "On me retire avant de boire à la bouteille."
-        );
+                "On me retire avant de boire à la bouteille.");
         bouteillePuzzle.setZoneToUnlock(riviere);
         bouteille.setPuzzle(bouteillePuzzle);
 
@@ -178,14 +174,24 @@ public class Game {
         caillou.setPuzzle(null);
         caillou.setZoneToUnlock(null);
 
-        // Forêt
+        // Ajout d'une énigme au champignon pour débloquer la lisière
         Item champignon = new Item("Champignon", "Champignon étrange", false, true);
-        champignon.setPuzzle(null);
-        champignon.setZoneToUnlock(null);
+        SimplePuzzle champignonPuzzle = new SimplePuzzle(
+                "On me cherche en forêt, je suis parfois délicieux ou mortel. Que suis-je en train de faire ?",
+                "cueillette",
+                "On me pratique panier à la main, souvent à l’automne.");
+        champignonPuzzle.setZoneToUnlock(lisiere);
+        champignon.setPuzzle(champignonPuzzle);
 
+        // Forêt
+        // (Boule déjà créée plus haut avec son puzzle)
         Item totem = new Item("Totem", "Fragment de totem en bois", true, true);
-        totem.setPuzzle(null);
-        totem.setZoneToUnlock(null);
+        SimplePuzzle totemPuzzle = new SimplePuzzle(
+                "Je suis un animal sacré pour les Amérindiens, symbole de sagesse et de nuit. Qui suis-je ?",
+                "hibou",
+                "Je vole sans bruit et mes yeux brillent dans l’obscurité.");
+        totemPuzzle.setZoneToUnlock(trouNoir);
+        totem.setPuzzle(totemPuzzle);
 
         // panneaux
         Item paneauP = new Item("Panneau de prévention", "N'allez pas plus au Sud ou il vous arrivera malheur!", false,
@@ -221,6 +227,7 @@ public class Game {
         lisiere.addItem(bouteille);
         foret.addItem(paneauF);
         foret.addItem(boule);
+        foret.addItem(totem);
 
         // Création du joueur
         this.player = new Player("Joueur");
@@ -234,8 +241,8 @@ public class Game {
         command.register(new MoveCommand(this));
         command.register(new InventoryCommand(this));
         command.register(new TakeCommand(this));
-        command.register(new UseCommand(this)); // inutile à retirer si tu veux
-        command.register(new SolveCommand(this)); // <-- Ajouté pour les énigmes
+        command.register(new UseCommand(this));
+        command.register(new SolveCommand(this));
     }
 
     public void run() {
@@ -243,6 +250,7 @@ public class Game {
         System.out.println("Bienvenue dans le jeu !");
         System.out.println("Tapez 'help' pour voir les commandes disponibles.");
         System.out.println("La case bleu clair indique votre position actuelle.");
+        System.out.println("Pour quitter le jeu il vous suffi d'écrire la commande <quit>");
         System.out.println(map.printMap(player.getX(), player.getY()));
 
         Scanner scanner = new Scanner(System.in);
@@ -254,8 +262,35 @@ public class Game {
                 break;
             }
             command.executeCommand(input);
+            checkTrouNoir();
+            checkVictoire();
         }
         scanner.close();
+    }
+
+  public void checkVictoire() {
+    Zone[][] zones = map.getMap();
+    if (zones == null) return;
+    for (Zone[] row : zones) {
+        if (row == null) continue;
+        for (Zone zone : row) {
+            if (zone != null && zone.getZoneState()) {
+                return; // Il reste une zone verrouillée, on ne fait rien
+            }
+        }
+    }
+    // Si on arrive ici, toutes les zones sont déverrouillées
+    System.out.println("Félicitations ! Vous avez débloqué toutes les zones et réussi le jeu !");
+}
+    public boolean checkTrouNoir() {
+        Zone currentZone = map.getZoneAt(player.getX(), player.getY());
+        if (currentZone != null && currentZone.getZoneName().equalsIgnoreCase("Le trou noir")) {
+            System.out.println("Vous êtes entré dans le trou noir... Plus personne ne vous reverra jamais !");
+            System.out.println("Fin de la partie.");
+            System.exit(0);
+            return true;
+        }
+        return false;
     }
 
     public WorldMap getMap() {
