@@ -41,7 +41,7 @@ if (puzzle != null && !puzzle.isSolved()) {
     return;
 }
 
-    System.out.println("Vous utilisez " + itemName + ".");
+    System.out.println("Vous utilisez " + itemName + " mais rien de spécial ne se passe.");
 }
 
     

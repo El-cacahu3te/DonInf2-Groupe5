@@ -55,21 +55,21 @@ public class Game {
         // Poulailler
         Item oeuf = new Item("Oeuf", "Un oeuf de poule", true, true);
         SimplePuzzle oeufPuzzle = new SimplePuzzle(
-                "Je suis la base d'une omelette, mais je ne suis pas un plat.",
+                "Je suis souvent mangé au petit déjeuné.",
                 "omelette",
                 "Je suis un met a base d'oeufs."
         );
         oeufPuzzle.setZoneToUnlock(poulailler);
         oeuf.setPuzzle(oeufPuzzle);
 
-        Item poule = new Item("Poule", "une petite poulette blanche", false, true);
+        Item poule = new Item("Poule", "Une petite poulette blanche", false, true);
         poule.setPuzzle(null);
         poule.setZoneToUnlock(null);
 
         // Cuisine
         Item couteau = new Item("Couteau", "Un couteau de cuisine", false, true);
         SimplePuzzle couteauPuzzle = new SimplePuzzle(
-                "Je suis souvent utilisé pour couper une tomate dans la cuisine.",
+                "Je suis un ingrédient essentiel dans la cuisine Italienne.",
                 "tomate",
                 "Je suis un fruit ou un légume, qui sait."
         );
@@ -82,7 +82,7 @@ public class Game {
                 "the",
                 "Je suis une boisson chaude que l'on infuse. Qui suis-je ?"
         );
-        livrePuzzle.setZoneToUnlock(cuisine); // <-- CORRECTED LINE
+        livrePuzzle.setZoneToUnlock(cuisine); 
         livre.setPuzzle(livrePuzzle);
 
         // Pétanque
@@ -92,8 +92,8 @@ public class Game {
 
         Item cochonnet = new Item("Cochonnet", "Cochonnet pour la pétanque", true, true);
         SimplePuzzle cochonnetPuzzle = new SimplePuzzle(
-                "Je suis la petite cible au centre du jeu de boules, on me trouve souvent vers le sud.",
-                "sud",
+                "D'ou je viens on a un super accent",
+                " le sud",
                 "Je suis la région d'ou vient la pétanque."
         );
         cochonnetPuzzle.setZoneToUnlock(petanque);
@@ -120,7 +120,7 @@ public class Game {
 
         Item arrosoir = new Item("Arrosoir", "Arrosoir trouvée sous une haie", true, true);
         SimplePuzzle arrosoirPuzzle = new SimplePuzzle(
-                "Je verse de l'eau pour faire pousser les plantes.",
+                "C'est grâce à moi que la vie sur terre existe.",
                 "eau",
                 "Je suis indispensable au jardinier, mais surtout à l'arrosoir."
         );
@@ -134,7 +134,7 @@ public class Game {
 
         Item rateau = new Item("Rateau", "Rateau contre la cabane", true, true);
         SimplePuzzle rateauPuzzle = new SimplePuzzle(
-                "Je rassemble la terre ou les feuilles mortes.",
+                "Mon nom a plusieurs définition, l'une est globale et l'autre vitale",
                 "terre",
                 "On m'utilise souvent au jardin, mais je ne suis pas une pelle."
         );
@@ -142,9 +142,9 @@ public class Game {
         rateau.setPuzzle(rateauPuzzle);
 
         // Piscine
-        Item bouee = new Item("Bouée", "Bouée trouée mais flottante", true, true);
+        Item bouee = new Item("Bouée", "Bouée en forme d'éléphant", true, true);
         SimplePuzzle boueePuzzle = new SimplePuzzle(
-                "Je flotte souvent sur la mer pour garder la tête hors de l'eau.",
+                "Je suis si vaste et dangereuse que les hommes me connaissent moins bien que l'espace.",
                 "mer",
                 "Je peut être morte et rouge."
         );

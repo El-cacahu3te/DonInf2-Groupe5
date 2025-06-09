@@ -25,7 +25,7 @@ public class LookCommand implements Command {
         if (currentZone != null) {
             System.out.println(currentZone.getZoneDesc() + "\nObjets dans la pièce:");
             if (currentZone.getListItems().isEmpty()) {
-                System.out.println("Il n'y a pas d'objets dans cette pièce.");
+                System.out.println("Il n'y a plus d'objets dans cette pièce.");
             } else {
                 for (Item item : currentZone.getListItems()) {
                     System.out.println("- " + item.getItemName() + " : " + item.getDescription());
