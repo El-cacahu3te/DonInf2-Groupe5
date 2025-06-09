@@ -23,18 +23,31 @@ public class SimplePuzzle implements Ipuzzle {
         return solved;
     }
 
-    @Override
-    public void solve(String[] args) {
-        if (args.length == 0) {
-            System.out.println("Veuillez entrer une réponse.");
-            return;
-        }
+    // Ajoute en haut de la classe
+private Zone zoneToUnlock;
 
-        String userAnswer = String.join(" ", args).trim().toLowerCase();
-        if (userAnswer.equals(solution.toLowerCase())) {
-            solved = true;
+// Ajoute ce setter dans la classe
+public void setZoneToUnlock(Zone zone) {
+    this.zoneToUnlock = zone;
+}
+
+  @Override
+public void solve(String[] args) {
+    if (args.length == 0) {
+        System.out.println("Veuillez entrer une réponse.");
+        return;
+    }
+
+    String userAnswer = String.join(" ", args).trim().toLowerCase();
+    if (userAnswer.equals(solution.toLowerCase())) {
+        solved = true;
+        // Ajoute ceci :
+        if (zoneToUnlock != null) {
+            zoneToUnlock.setZoneState(false); // déverrouille la zone
+            System.out.println("La zone " + zoneToUnlock.getZoneName() + " est maintenant déverrouillée !");
         }
     }
+}
 
     @Override
     public void reset() {
