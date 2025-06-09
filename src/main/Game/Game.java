@@ -83,7 +83,7 @@ public class Game {
         livre.setPuzzle(livrePuzzle);
 
         // Pétanque
-        Item boule = new Item("Boule", "Boule de pétanque usée", false, true);
+        Item boule = new Item("Boule", "Boule de pétanque usée", true, true);
         // Ajout d'une énigme pour débloquer la forêt
         SimplePuzzle boulePuzzle = new SimplePuzzle(
                 "Je roule sur le gravier, je suis lancée pour m'approcher du cochonnet. Qui suis-je ?",
@@ -97,7 +97,7 @@ public class Game {
                 "D'ou je viens on a un super accent",
                 "le sud",
                 "Je suis la région d'ou vient la pétanque.");
-        cochonnetPuzzle.setZoneToUnlock(petanque);
+        cochonnetPuzzle.setZoneToUnlock(lisiere);
         cochonnet.setPuzzle(cochonnetPuzzle);
 
         // Massif de fleurs
@@ -110,9 +110,12 @@ public class Game {
         fleur.setPuzzle(fleurPuzzle);
 
         Item coccinelle = new Item("Coccinelle", "Une coccinelle posé sur une fleur", false, true);
-        coccinelle.setPuzzle(null);
-        coccinelle.setZoneToUnlock(null);
-
+        SimplePuzzle coccinellePuzzle = new SimplePuzzle(
+                "Je suis le mets préféré de la coccinelle, minuscule parasite vert ou noir qui envahit les plantes. Qui suis-je ?",
+                "puceron",
+                "Je suce la sève des plantes et attire les fourmis.");
+        coccinellePuzzle.setZoneToUnlock(riviere);
+        coccinelle.setPuzzle(coccinellePuzzle);
         // Jardin
         Item pelle = new Item("Pelle", "Petite pelle pour jardiner", false, true);
         pelle.setPuzzle(null);
@@ -136,7 +139,7 @@ public class Game {
                 "Mon nom a plusieurs définition, l'une est globale et l'autre vitale",
                 "terre",
                 "On m'utilise souvent au jardin, mais je ne suis pas une pelle.");
-        rateauPuzzle.setZoneToUnlock(verger);
+        rateauPuzzle.setZoneToUnlock(foret);
         rateau.setPuzzle(rateauPuzzle);
 
         // Piscine
@@ -171,16 +174,20 @@ public class Game {
         ecorce.setZoneToUnlock(null);
 
         Item caillou = new Item("Caillou", "Caillou couverte de mousse", true, true);
-        caillou.setPuzzle(null);
-        caillou.setZoneToUnlock(null);
+        SimplePuzzle caillouPuzzle = new SimplePuzzle(
+                "Je suis le manteau vert qui recouvre parfois les pierres dans les sous-bois humides. Qui suis-je ?",
+                "mousse",
+                "On me trouve souvent sur les troncs ou les rochers à l’ombre, je suis douce au toucher.");
+        caillouPuzzle.setZoneToUnlock(petanque);
+        caillou.setPuzzle(caillouPuzzle);
 
         // Ajout d'une énigme au champignon pour débloquer la lisière
-        Item champignon = new Item("Champignon", "Champignon étrange", false, true);
+        Item champignon = new Item("Champignon", "Champignon étrange", true, true);
         SimplePuzzle champignonPuzzle = new SimplePuzzle(
                 "On me cherche en forêt, je suis parfois délicieux ou mortel. Que suis-je en train de faire ?",
                 "cueillette",
                 "On me pratique panier à la main, souvent à l’automne.");
-        champignonPuzzle.setZoneToUnlock(lisiere);
+        champignonPuzzle.setZoneToUnlock(foret);
         champignon.setPuzzle(champignonPuzzle);
 
         // Forêt
@@ -268,20 +275,23 @@ public class Game {
         scanner.close();
     }
 
-  public void checkVictoire() {
-    Zone[][] zones = map.getMap();
-    if (zones == null) return;
-    for (Zone[] row : zones) {
-        if (row == null) continue;
-        for (Zone zone : row) {
-            if (zone != null && zone.getZoneState()) {
-                return; // Il reste une zone verrouillée, on ne fait rien
+    public void checkVictoire() {
+        Zone[][] zones = map.getMap();
+        if (zones == null)
+            return;
+        for (Zone[] row : zones) {
+            if (row == null)
+                continue;
+            for (Zone zone : row) {
+                if (zone != null && zone.getZoneState()) {
+                    return; // Il reste une zone verrouillée, on ne fait rien
+                }
             }
         }
+        // Si on arrive ici, toutes les zones sont déverrouillées
+        System.out.println("Félicitations ! Vous avez débloqué toutes les zones et réussi le jeu !");
     }
-    // Si on arrive ici, toutes les zones sont déverrouillées
-    System.out.println("Félicitations ! Vous avez débloqué toutes les zones et réussi le jeu !");
-}
+
     public boolean checkTrouNoir() {
         Zone currentZone = map.getZoneAt(player.getX(), player.getY());
         if (currentZone != null && currentZone.getZoneName().equalsIgnoreCase("Le trou noir")) {
