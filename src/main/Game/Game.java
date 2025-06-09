@@ -54,34 +54,36 @@ public class Game {
 
         // Poulailler
         Item oeuf = new Item("Oeuf", "Un oeuf de poule", true, true);
-        oeuf.setPuzzle(new SimplePuzzle(
+        SimplePuzzle oeufPuzzle = new SimplePuzzle(
                 "Je suis la base d'une omelette, mais je ne suis pas un plat.",
                 "omelette",
                 "Je suis un met a base d'oeufs."
-        ));
-        oeuf.setZoneToUnlock(poulailler);
+        );
+        oeufPuzzle.setZoneToUnlock(poulailler);
+        oeuf.setPuzzle(oeufPuzzle);
 
         Item poule = new Item("Poule", "une petite poulette blanche", false, true);
-        // Pas d'énigme ni zone à déverrouiller
         poule.setPuzzle(null);
         poule.setZoneToUnlock(null);
 
         // Cuisine
         Item couteau = new Item("Couteau", "Un couteau de cuisine", false, true);
-        couteau.setPuzzle(new SimplePuzzle(
+        SimplePuzzle couteauPuzzle = new SimplePuzzle(
                 "Je suis souvent utilisé pour couper une tomate dans la cuisine.",
                 "tomate",
                 "Je suis un fruit ou un légume, qui sait."
-        ));
+        );
+        couteau.setPuzzle(couteauPuzzle);
         couteau.setZoneToUnlock(null);
 
         Item livre = new Item("Livre", "Un vieux livre de recettes", true, true);
-        livre.setPuzzle(new SimplePuzzle(
+        SimplePuzzle livrePuzzle = new SimplePuzzle(
                 "Je suis une boisson chaude. Qui suis-je ?",
                 "the",
                 "Je suis une boisson chaude que l'on infuse. Qui suis-je ?"
-        ));
-        livre.setZoneToUnlock(cuisine);
+        );
+        livrePuzzle.setZoneToUnlock(cuisine); // <-- CORRECTED LINE
+        livre.setPuzzle(livrePuzzle);
 
         // Pétanque
         Item boule = new Item("Boule", "Boule de pétanque usée", false, true);
@@ -89,21 +91,23 @@ public class Game {
         boule.setZoneToUnlock(null);
 
         Item cochonnet = new Item("Cochonnet", "Cochonnet pour la pétanque", true, true);
-        cochonnet.setPuzzle(new SimplePuzzle(
+        SimplePuzzle cochonnetPuzzle = new SimplePuzzle(
                 "Je suis la petite cible au centre du jeu de boules, on me trouve souvent vers le sud.",
                 "sud",
                 "Je suis la région d'ou vient la pétanque."
-        ));
-        cochonnet.setZoneToUnlock(petanque);
+        );
+        cochonnetPuzzle.setZoneToUnlock(petanque);
+        cochonnet.setPuzzle(cochonnetPuzzle);
 
         // Massif de fleurs
         Item fleur = new Item("Fleur", "Une jolie fleur colorée", true, true);
-        fleur.setPuzzle(new SimplePuzzle(
+        SimplePuzzle fleurPuzzle = new SimplePuzzle(
                 "Je suis une fleur très célèbre, souvent rouge et épineuse.",
                 "rose",
                 "Je représente l'amour."
-        ));
-        fleur.setZoneToUnlock(leMassif);
+        );
+        fleurPuzzle.setZoneToUnlock(leMassif);
+        fleur.setPuzzle(fleurPuzzle);
 
         Item coccinelle = new Item("Coccinelle", "Une coccinelle posé sur une fleur", false, true);
         coccinelle.setPuzzle(null);
@@ -115,12 +119,13 @@ public class Game {
         pelle.setZoneToUnlock(null);
 
         Item arrosoir = new Item("Arrosoir", "Arrosoir trouvée sous une haie", true, true);
-        arrosoir.setPuzzle(new SimplePuzzle(
+        SimplePuzzle arrosoirPuzzle = new SimplePuzzle(
                 "Je verse de l'eau pour faire pousser les plantes.",
                 "eau",
                 "Je suis indispensable au jardinier, mais surtout à l'arrosoir."
-        ));
-        arrosoir.setZoneToUnlock(jardin);
+        );
+        arrosoirPuzzle.setZoneToUnlock(jardin);
+        arrosoir.setPuzzle(arrosoirPuzzle);
 
         // Verger
         Item pomme = new Item("Pomme", "Une pomme trouvée dans l'arbre creux", false, true);
@@ -128,21 +133,23 @@ public class Game {
         pomme.setZoneToUnlock(null);
 
         Item rateau = new Item("Rateau", "Rateau contre la cabane", true, true);
-        rateau.setPuzzle(new SimplePuzzle(
+        SimplePuzzle rateauPuzzle = new SimplePuzzle(
                 "Je rassemble la terre ou les feuilles mortes.",
                 "terre",
                 "On m'utilise souvent au jardin, mais je ne suis pas une pelle."
-        ));
-        rateau.setZoneToUnlock(verger);
+        );
+        rateauPuzzle.setZoneToUnlock(verger);
+        rateau.setPuzzle(rateauPuzzle);
 
         // Piscine
         Item bouee = new Item("Bouée", "Bouée trouée mais flottante", true, true);
-        bouee.setPuzzle(new SimplePuzzle(
+        SimplePuzzle boueePuzzle = new SimplePuzzle(
                 "Je flotte souvent sur la mer pour garder la tête hors de l'eau.",
                 "mer",
                 "Je peut être morte et rouge."
-        ));
-        bouee.setZoneToUnlock(piscine);
+        );
+        boueePuzzle.setZoneToUnlock(piscine);
+        bouee.setPuzzle(boueePuzzle);
 
         Item lunette = new Item("Lunette de piscine", "Lunette trouvé au fond de la piscine", false, true);
         lunette.setPuzzle(null);
@@ -154,12 +161,13 @@ public class Game {
         poisson.setZoneToUnlock(null);
 
         Item bouteille = new Item("Bouteille", "Bouteille contenant une clé", true, true);
-        bouteille.setPuzzle(new SimplePuzzle(
+        SimplePuzzle bouteillePuzzle = new SimplePuzzle(
                 "Je ferme une bouteille, je suis souvent en liège ou plastique.",
                 "bouchon",
                 "On me retire avant de boire à la bouteille."
-        ));
-        bouteille.setZoneToUnlock(riviere);
+        );
+        bouteillePuzzle.setZoneToUnlock(riviere);
+        bouteille.setPuzzle(bouteillePuzzle);
 
         // Lisière de forêt
         Item ecorce = new Item("Écorce", "Écorce avec un symbole", false, true);

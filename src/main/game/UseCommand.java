@@ -34,12 +34,12 @@ public void execute(String[] args) {
     }
 
     Ipuzzle puzzle = item.getPuzzle();
-    if (puzzle != null && !puzzle.isSolved()) {
-        System.out.println("Cet objet est verrouillé par une énigme !");
-        System.out.println("Indice : " + puzzle.getHint());
-        System.out.println("Pour résoudre l'énigme, utilisez la commande : solve <nom de l'objet> <réponse>");
-        return;
-    }
+if (puzzle != null && !puzzle.isSolved()) {
+    System.out.println("Cet objet est verrouillé par une énigme !");
+    System.out.println("Énigme : " + puzzle.getName());
+    System.out.println("Pour répondre, utilisez la commande : solve <nom de l'objet> <réponse>");
+    return;
+}
 
     System.out.println("Vous utilisez " + itemName + ".");
 }
