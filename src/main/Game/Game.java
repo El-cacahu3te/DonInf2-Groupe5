@@ -14,7 +14,7 @@ public class Game {
         Zone chambre = new Zone("La chambre",
                 "Un endroit cosy et tranquille, parfait pour se reposer après une longue journée d'aventure.", false);
         Zone poulailler = new Zone("Le poulailler",
-                "Les poules caquettent joyeusement ici. On y trouve des œufs frais chaque matin.", true);
+                "Les poules caquettent joyeusement ici. On y trouve des oeufs frais chaque matin.", true);
         Zone verger = new Zone("Le verger",
                 "Un lieu paisible rempli d'arbres fruitiers. L'air y est doux, parfumé de pommes et de cerises.", true);
         Zone foret = new Zone("La forêt",

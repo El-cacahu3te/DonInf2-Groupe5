@@ -2,6 +2,7 @@ package main.game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.text.Normalizer;
 
 public class Inventory {
     private List<Item> items = new ArrayList<>();
@@ -26,13 +27,21 @@ public class Inventory {
         return items.isEmpty();
     }
 
-    // Méthode pour récupérer un item par nom
     public Item getItem(String name) {
+        String normalizedInput = normalize(name);
         for (Item item : items) {
-            if (item.getItemName().equalsIgnoreCase(name)) {
+            if (normalize(item.getItemName()).equalsIgnoreCase(normalizedInput)) {
                 return item;
             }
         }
         return null;
+    }
+
+    // Ajoute cette méthode utilitaire dans Inventory.java
+    private String normalize(String s) {
+        if (s == null)
+            return "";
+        String normalized = Normalizer.normalize(s, Normalizer.Form.NFD);
+        return normalized.replaceAll("\\p{M}", "");
     }
 }

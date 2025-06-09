@@ -2,7 +2,8 @@ package main.game;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.text.Normalizer;
+import java.util.regex.Pattern;
 import utils.IPrintable;
 
 public class Zone implements IPrintable {
@@ -67,14 +68,22 @@ public class Zone implements IPrintable {
         }
     }
 
-    public Item getItem(String name) {
-        for (Item i : items) {
-            if (i.getItemName().equalsIgnoreCase(name) && i.canTake()) {
-                return i;
-            }
+   public Item getItem(String name) {
+    String normalizedInput = normalize(name);
+    for (Item i : items) {
+        if (normalize(i.getItemName()).equalsIgnoreCase(normalizedInput) && i.canTake()) {
+            return i;
         }
-        return null;
+    }
+    return null;
+}
 
+    // Ajoute cette méthode utilitaire dans la classe Zone
+    private String normalize(String s) {
+        if (s == null)
+            return "";
+        String normalized = Normalizer.normalize(s, Normalizer.Form.NFD);
+        return normalized.replaceAll("\\p{M}", "");
     }
 
     // Pour afficher proprement tous les objets de la zone

@@ -1,5 +1,7 @@
 package main.game;
 
+import java.text.Normalizer;
+
 public class SolveCommand implements Command {
     private Game game;
 
@@ -25,36 +27,24 @@ public class SolveCommand implements Command {
         }
 
         Player player = game.getPlayer();
-        Zone currentZone = game.getMap().getZoneAt(player.getX(), player.getY());
+
         String itemName = args[0];
+        String normalizedInput = normalize(itemName);
 
         // Vérifie que l'objet est dans l'inventaire du joueur
-        boolean hasItem = false;
-        for (Item invItem : player.getInventory().getItems()) {
-            if (invItem.getItemName().equalsIgnoreCase(itemName)) {
-                hasItem = true;
-                break;
-            }
-        }
-        if (!hasItem) {
-            System.out.println(
-                    "Vous devez avoir l'objet '" + itemName + "' dans votre inventaire pour résoudre son énigme.");
-            return;
-        }
-
-        // Cherche l'objet dans l'inventaire du joueur
         Item item = null;
         for (Item invItem : player.getInventory().getItems()) {
-            if (invItem.getItemName().equalsIgnoreCase(itemName)) {
+            if (normalize(invItem.getItemName()).equalsIgnoreCase(normalizedInput)) {
                 item = invItem;
                 break;
             }
         }
         if (item == null) {
             System.out.println(
-                    "Vous devez avoir l'objet '" + itemName + "' dans votre inventaire pour résoudre son énigme.");
+                "Vous devez avoir l'objet '" + itemName + "' dans votre inventaire pour résoudre son énigme.");
             return;
         }
+
         Ipuzzle puzzle = item.getPuzzle();
         if (puzzle == null) {
             System.out.println("Cet objet n'a pas d'énigme à résoudre.");
@@ -84,5 +74,13 @@ public class SolveCommand implements Command {
         } else if (!puzzle.isSolved()) {
             System.out.println("Mauvaise réponse. Indice : " + puzzle.getHint());
         }
+    }
+
+    // Méthode utilitaire pour normaliser les accents
+    private String normalize(String s) {
+        if (s == null)
+            return "";
+        String normalized = Normalizer.normalize(s, Normalizer.Form.NFD);
+        return normalized.replaceAll("\\p{M}", "");
     }
 }
